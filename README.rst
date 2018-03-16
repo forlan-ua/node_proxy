@@ -1,6 +1,8 @@
 node_proxy - Node proxy is an ORM for rod nodes
 ===============================================
 
+*NOTE:* Use `-d:debugNodeProxy` to see macro output 
+
 
 1. Define any properties
 ------------------------
