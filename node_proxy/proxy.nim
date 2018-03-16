@@ -3,9 +3,8 @@ import rod / node
 import plugin
 import plugins / [animations, components, nodes, ctors, observarbles]
 
-import observarble_component
+import plugins / observarble_component
 export observarble_component
-
 
 type NodeProxy* = ref object of RootObj
     node*: Node

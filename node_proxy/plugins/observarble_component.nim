@@ -1,6 +1,7 @@
 import rod / component
 import observarble
 
+
 type ObserverComponent* = ref object of Component
     target*: Observarble
     subscriptions*: seq[ObserverHandler]

@@ -1,8 +1,8 @@
 import macros, tables, strutils
 import .. / plugin
 import rod / component
-import .. / observarble
-import .. / observarble_component
+import observarble
+import observarble_component
 
 
 proc observeProxyPlugin*(data: NodeProxyPluginData) =
