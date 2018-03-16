@@ -59,7 +59,7 @@ proc toNodeProxy(x: NimNode, y: NimNode = nil): NimNode =
     let typeProps = typedef[0][2][0][2]
 
     if y.isDiscard():
-        return
+        return res
     
     var initProc = quote:
         proc init*(`NP`: `T`, node: Node) =
@@ -89,8 +89,9 @@ proc toNodeProxy(x: NimNode, y: NimNode = nil): NimNode =
         case p[0].kind:
             of nnkIdent:
                 pluginData.prop = p.getPropDef()
-                if p.len > 2:
-                    for k in p[2]:
+                let morePropsIndex = if p[0].eqIdent("*"): 3 else: 2
+                if p.len > morePropsIndex:
+                    for k in p[morePropsIndex]:
                         k.expectKind(nnkCall)
                         k[0].expectKind(nnkTableConstr)
                         
@@ -206,7 +207,7 @@ when isMainModule:
 
         child Node {withName: "child1"}
 
-        text2 Text: 
+        text2* Text: 
             {onNodeAdd: nilNode}:
                 bounds = newRect(20.0, 20.0, 100.0, 100.0)
             {observe: obj}:

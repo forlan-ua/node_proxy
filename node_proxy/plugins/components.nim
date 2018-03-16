@@ -32,7 +32,10 @@ proc onNodeAddNodeProxyPlugin*(data: NodeProxyPluginData) =
     let propType = data.prop.getPropTypeIdent()
     var node = data.props["onNodeAdd"]
     if node.kind == nnkIdent:
-        node = nnkDotExpr.newTree(NP, node) 
+        node = nnkDotExpr.newTree(NP, node)
+    elif node.kind == nnkStrLit:
+        node = quote:
+            `NP`.node.findNode(`node`)
 
     let oninit = quote:
         assert(`node`.getComponent(`propType`).isNil, "Component already added")
