@@ -11,5 +11,5 @@ skipDirs = @["tests"]
 # Dependencies
 
 requires "nim >= 0.17.3"
-requires "rod"
+requires "https://github.com/OnsetGame/rod"
 requires "https://github.com/OnsetGame/observarble.git"
